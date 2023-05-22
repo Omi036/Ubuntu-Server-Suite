@@ -1,0 +1,64 @@
+#/bin/bash
+
+# Encuentra la ubicacion del archivo
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+# Actualizar el sistema operativo
+sudo apt-get update
+sudo apt-get upgrade -y
+
+# Instala servicios y apps importantes
+sudo apt-get install snapd  xubuntu-desktop openssh-server python3 python3-pip npm nodejs git cmake ruby docker php vsftpd nmap net-tools gufw apache2 htop neofetch default-jre default-jdk wireshark mysql-client-core-8.0 mysql-server -y 
+sudo snap install insomnia
+sudo snap install dbeaver-ce
+sudo snap install atom --classic
+
+# Settea el firewall 
+# Nota: los firewalls de linux son DEMASIADO dificiles de configurar manualmente
+#       Si lo quieres editar, recomiendo usar la GUI (gufw)
+sudo ufw allow 80
+sudo ufw allow 21
+sudo ufw allow 22
+sudo ufw allow 3306
+
+# Cambia los archivos de configuracion
+sudo cp $SCRIPT_DIR/configfiles/vsftpd.conf /etc/vsftpd.conf
+
+# Salida
+clear
+echo "Toda la suite ha sido instalada correctamente!!"
+echo "Para iniciar o cerrar servicios, revisa la carpeta 'shortcuts'"
+echo "Servicios instalados:"
+echo " · OpenSSH"
+echo " · Apache Httpd"
+echo " · Vsftpd (si usas filezilla, conectate al servidor ssh en vez de ftp)"
+echo " · MySql"
+echo ""
+echo "Lenguajes/Compiladores/Gestores instalados:"
+echo " · Python3"
+echo " · Node.js"
+echo " · Ruby"
+echo " · Php"
+echo " · Java JRE"
+echo " · Java JDK"
+echo " · Cmake     (Compilador)"
+echo " · Package Installer for Python"
+echo " · Node Package Manager"
+echo ""
+echo "Herramientas instaladas"
+echo " · Git       (Gestor de versiones)"
+echo " · Nmap      (Herramienta de ciberseguridad que busca info de direcciones ip)"
+echo " · Wireshark (Herramienta de ciberseguridad que escanea paquetes de la red)"
+echo " · Insomnia  (Herramienta de depuracion que envia paquetes editados manualmente)"
+echo " · Gufw      (GUI para el firewall)"
+echo " · Docker    (Gestor de entornos)"
+echo " · Htop      (Administrador de tareas)"
+echo " · Dbeaver   (Cliente SQL que soporta prácticamente cualquier base de datos SQL)"
+echo " · Atom      (Editor de código creado por GitHub)"
+echo ""
+echo "Otros instalados:"
+echo " · Xubuntu-Desktop (Entorno de escritorio liviano)"
+echo " · Neofetch        (Display informacion del sistema"
+echo " · net-tools       (Dependencia; Proporciona comandos como ifconfig)"
+echo ""
+echo "Para finalizar la instalacion, reinicie Ubuntu."
