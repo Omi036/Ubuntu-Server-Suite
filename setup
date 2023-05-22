@@ -1,64 +1,64 @@
 #/bin/bash
 
-# Encuentra la ubicacion del archivo
+# Finds the original file directory
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-# Actualizar el sistema operativo
+# Updates Ubuntu
 sudo apt-get update
 sudo apt-get upgrade -y
 
-# Instala servicios y apps importantes
+# Services and packages installation
 sudo apt-get install snapd  xubuntu-desktop openssh-server python3 python3-pip npm nodejs git cmake ruby docker php vsftpd nmap net-tools gufw apache2 htop neofetch default-jre default-jdk wireshark mysql-client-core-8.0 mysql-server -y 
 sudo snap install insomnia
 sudo snap install dbeaver-ce
 sudo snap install atom --classic
 
-# Settea el firewall 
-# Nota: los firewalls de linux son DEMASIADO dificiles de configurar manualmente
-#       Si lo quieres editar, recomiendo usar la GUI (gufw)
+# Firewall Setup
+# Note: Firewall set up via GUI (gufw) is highly recommended 
 sudo ufw allow 80
 sudo ufw allow 21
 sudo ufw allow 22
 sudo ufw allow 3306
 
-# Cambia los archivos de configuracion
+# Changes config files
 sudo cp $SCRIPT_DIR/configfiles/vsftpd.conf /etc/vsftpd.conf
 
-# Salida
+# Output
 clear
-echo "Toda la suite ha sido instalada correctamente!!"
-echo "Para iniciar o cerrar servicios, revisa la carpeta 'shortcuts'"
-echo "Servicios instalados:"
+echo "The Suite was downloaded and installed correctly!!"
+echo "To start/close services, check the 'shortcuts' folder"
+echo "Services Installed:"
 echo " · OpenSSH"
 echo " · Apache Httpd"
-echo " · Vsftpd (si usas filezilla, conectate al servidor ssh en vez de ftp)"
+echo " · Vsftpd"
 echo " · MySql"
 echo ""
-echo "Lenguajes/Compiladores/Gestores instalados:"
+echo "Languages/Compilers Installed:"
 echo " · Python3"
 echo " · Node.js"
 echo " · Ruby"
 echo " · Php"
 echo " · Java JRE"
 echo " · Java JDK"
-echo " · Cmake     (Compilador)"
+echo " · Cmake     (Compiler)"
 echo " · Package Installer for Python"
 echo " · Node Package Manager"
 echo ""
-echo "Herramientas instaladas"
-echo " · Git       (Gestor de versiones)"
-echo " · Nmap      (Herramienta de ciberseguridad que busca info de direcciones ip)"
-echo " · Wireshark (Herramienta de ciberseguridad que escanea paquetes de la red)"
-echo " · Insomnia  (Herramienta de depuracion que envia paquetes editados manualmente)"
-echo " · Gufw      (GUI para el firewall)"
-echo " · Docker    (Gestor de entornos)"
-echo " · Htop      (Administrador de tareas)"
-echo " · Dbeaver   (Cliente SQL que soporta prácticamente cualquier base de datos SQL)"
-echo " · Atom      (Editor de código creado por GitHub)"
+echo "Tools Installed"
+echo " · Git       (Versions Manager)"
+echo " · Nmap      (Cybersecurity Tool that scans networks)"
+echo " · Wireshark (Cybersecurity Tool that scans packets inside a network)"
+echo " · Insomnia  (Debugging tool for sending packages manually)"
+echo " · Gufw      (Firewall GUI)"
+echo " · Docker    (Envinronment Manager)"
+echo " · Htop      (Task Manager)"
+echo " · Dbeaver   (SQL Client with GUI that can access to a big variety of SQL Servers)"
+echo " · Atom      (Code editor make by Github)"
 echo ""
 echo "Otros instalados:"
-echo " · Xubuntu-Desktop (Entorno de escritorio liviano)"
-echo " · Neofetch        (Display informacion del sistema"
-echo " · net-tools       (Dependencia; Proporciona comandos como ifconfig)"
+echo " · Xubuntu-Desktop (Lightweight Desktop Environment and Window Manager)"
+echo " · Neofetch        (Displays System Info)"
+echo " · net-tools       (Dependency; Grant access to commands like 'ifconfig')"
 echo ""
-echo "Para finalizar la instalacion, reinicie Ubuntu."
+echo "To finish with the installation, reboot your Ubuntu."
+echo "It was a pleasure to work with you"
